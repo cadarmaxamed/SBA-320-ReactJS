@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Search from "./components/Search";
-import currentWeather from "./components/currentWeather";
+import CurrentWeather from "./components/currentWeather";
 import Forecast from "./components/Forecast";
 import "./App.css";
 
-function App({}) {
-  const [currentweather, setcurrentWeather] = useState(null);
+const API_URL = "https://api.openweathermap.org/data/2.5";
+
+function App() {
+  const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [searchData, setSearchData] = useState(null);
 
@@ -13,15 +15,17 @@ function App({}) {
     if (searchData) {
       const fetchWeatherData = async () => {
         try {
-          const [WeatherResponse, forecastResponse] = await Promise.all([
+          const [currentWeatherResponse, forecastResponse] = await Promise.all([
             fetch(
-              "https://api.openweathermap.org/data/2.5/weather?q={search}&appid={395b22df51a4c264230e093160dc365d}"
+              `${API_URL}/weather?q=${searchData.label}&APPID=395b22df51a4c264230e093160dc365d`
             ),
-          
+            fetch(
+              `${API_URL}/forecast?q=${searchData.label}&APPID=395b22df51a4c264230e093160dc365d`
+            )
           ]);
-          const currentWeatherData = await WeatherResponse.json();
+          const currentWeatherData = await currentWeatherResponse.json();
           const forecastData = await forecastResponse.json();
-          setcurrentWeather({ city: searchData.label, ...currentWeatherData });
+          setCurrentWeather({ city: searchData.label, ...currentWeatherData });
           setForecast({ city: searchData.label, ...forecastData });
         } catch (error) {
           console.error("Error fetching weather data: ", error);
@@ -29,7 +33,7 @@ function App({}) {
       };
       fetchWeatherData();
     }
-  }, [searchData, apiKey1, apiKey2]);
+  }, [searchData]);
 
   const handleOnSearchChange = (data) => {
     setSearchData(data);
@@ -45,4 +49,3 @@ function App({}) {
 }
 
 export default App;
-
