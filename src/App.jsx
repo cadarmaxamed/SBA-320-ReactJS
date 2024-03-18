@@ -1,11 +1,12 @@
 import './App.css';
-import Weather from './components/weather';
-import Search from './components/search';
+import Weather from './components/Weather';
+import Search from './components/Search';
 
 function App() {
   return(
   <div classname= "App">
-    <weather/>
+    <Weather/>
+    <Search/>
 
 
   </div>
