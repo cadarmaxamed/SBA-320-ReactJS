@@ -1,7 +1,6 @@
-
 import React from "react";
 
-function Weather({ data }) {
+function currentWeather({ data }) {
   return (
     <div>
       <h2>Current Weather in {data.city}</h2>
@@ -11,4 +10,4 @@ function Weather({ data }) {
   );
 }
 
-export default Weather;
+export default currentWeather;
