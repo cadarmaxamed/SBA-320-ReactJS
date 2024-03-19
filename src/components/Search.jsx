@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-function Search({ onSearchChange }) {
-  const [searchInput, setSearchInput] = useState("");
+// // export default Search;
+// export default function Search({ search, setSearch, handleSearch }) {
+//   const [searchInput, setSearchInput] = useState("");
 
-  const handleInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
+//     const handleInputChange = (e) => {
+//       setSearchInput(e.target.value);
+//     };
+  
+//     const handleSubmit = (e) => {
+//       e.preventDefault();
+//       if (searchInput.trim() !== "") {
+//         const [lat, lon] = searchInput.split(" ");
+//         onSearchChange({ value: searchInput, lat, lon, label: searchInput });
+//       }
+//     };
+  
+//   return (
+//     <div className="search-box">
+//       <input
+//         type="text"
+//         placeholder="Enter City Name"
+//         name="search"
+//         value={search}
+//         onChange={(event) => setSearch(event.target.value)}
+//       />
+//       <button onClick={handleSearch}>
+//         Search
+//       </button>
+//     </div>
+//   );
+// }
+import React from "react";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (searchInput.trim() !== "") {
-      const [lat, lon] = searchInput.split(" ");
-      onSearchChange({ value: searchInput, lat, lon, label: searchInput });
-    }
-  };
-
+export default function Search({ search, setSearch, handleSearch }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="search-box">
       <input
         type="text"
-        placeholder="Enter latitude and longitude (e.g., 40.7128 -74.0060)"
-        value={searchInput}
-        onChange={handleInputChange}
+        placeholder="Enter City Name"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
       />
-      <button type="submit">Search</button>
-    </form>
+      <button onClick={handleSearch}>
+        Search
+      </button>
+    </div>
   );
 }
-
-export default Search;

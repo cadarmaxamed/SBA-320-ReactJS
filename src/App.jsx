@@ -1,3 +1,4 @@
+// export default App;
 import React, { useState, useEffect } from "react";
 import Search from "./components/Search";
 import CurrentWeather from "./components/currentWeather";
@@ -23,8 +24,10 @@ function App() {
               `${API_URL}/forecast?q=${searchData.label}&APPID=395b22df51a4c264230e093160dc365d`
             )
           ]);
+
           const currentWeatherData = await currentWeatherResponse.json();
           const forecastData = await forecastResponse.json();
+
           setCurrentWeather({ city: searchData.label, ...currentWeatherData });
           setForecast({ city: searchData.label, ...forecastData });
         } catch (error) {

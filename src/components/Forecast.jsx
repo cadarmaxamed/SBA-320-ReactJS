@@ -16,3 +16,6 @@ function Forecast({ data }) {
 }
 
 export default Forecast;
+
+
+
