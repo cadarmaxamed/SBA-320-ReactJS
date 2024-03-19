@@ -5,7 +5,7 @@ import CurrentWeather from "./components/currentWeather";
 import Forecast from "./components/Forecast";
 import "./App.css";
 
-const API_URL = "https://api.openweathermap.org/data/2.5";
+const API_URL = "https://api.openweathermap.org/data/2.5/weather?q={params}";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
