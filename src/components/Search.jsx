@@ -5,6 +5,7 @@ export default function Search({ search, setSearch, handleSearch }) {
     <div className="search-box">
       <input
         type="text"
+        name="search"
         placeholder="Enter City Name"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
